@@ -41,3 +41,5 @@ age_conversion_dict = {
 }
 
 person_df["AGE_GROUP_ADJUSTED"] = person_df["AGE_GROUP"].map(age_conversion_dict)
+
+person_df.to_csv("person_adjusted.csv")

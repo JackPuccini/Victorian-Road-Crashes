@@ -1,8 +1,7 @@
 import matplotlib.pyplot as plt
 import pandas as pd
 
-
-person_df = pd.read_csv("data/person.csv")
+person_df = pd.read_csv("data/person_adjusted.csv")
 
 # For "HELMET_BELT_WORN" category:
 # 1.0: "Seatbelt Worn"
@@ -25,7 +24,9 @@ def task1_2():
 
     # Count number of 1s and 8s for each age range
     grouped_age_range = (
-        filtered.groupby(["AGE_GROUP", "HELMET_BELT_WORN"]).size().unstack(fill_value=0)
+        filtered.groupby(["AGE_GROUP_ADJUSTED", "HELMET_BELT_WORN"])
+        .size()
+        .unstack(fill_value=0)
     )
 
     # Using pandas df.plot() method for generating matplotlib plots
@@ -34,13 +35,23 @@ def task1_2():
     ax.set_xlabel("Age Group")
     ax.set_ylabel("Number of People")
 
+    # Compute total people per age group and proportion worn
+    seatbelt_worn = grouped_age_range[1.0]
+    seatbelt_total = grouped_age_range[1.0] + grouped_age_range[8.0]
+    proportions = (seatbelt_worn / seatbelt_total * 100).round(1)
+
+    # Annotate above each 'worn' bar
+    for i, (val, pct) in enumerate(zip(seatbelt_worn, proportions)):
+        ax.text(
+            i - 0.10, val + 3, f"{pct}%", ha="center", fontsize=9, fontweight="bold"
+        )
+
     # Slight tilt for each x-axis tick label
     plt.xticks(rotation=50)
     ax.legend(["Seatbelt Worn", "Seatbelt Not Worn"])
     # Ensure proportions are natural and save the plot as an image
     plt.tight_layout()
     plt.savefig("task1_2_age.png")
-    # plt.show()
 
     # ------------- Pie Chart 1 ------------- #
 
@@ -75,10 +86,9 @@ def task1_2():
     axes[1].pie(passengers_counts, labels=labels, autopct="%1.1f%%", startangle=90)
     axes[1].set_title("Passengers")
 
-    plt.suptitle("Seatbelt Use Comparison: Drivers vs Passengers")
+    plt.suptitle("Seatbelt Use Comparison: Drivers vs Passengers", y=1.02)
     plt.tight_layout()
-    plt.savefig("task1_2_driver.png")
-    # plt.show()
+    plt.savefig("task1_2_driver.png", bbox_inches="tight")
 
     # ------------- Pie Chart 2 ------------- #
 
@@ -124,10 +134,9 @@ def task1_2():
     axes[1].pie(frontseat_counts, labels=labels, autopct="%1.1f%%", startangle=90)
     axes[1].set_title("Front-seat Passengers")
 
-    plt.suptitle("Seatbelt Use Comparison: Front-seat vs Back-seat Passengers")
+    plt.suptitle("Seatbelt Use Comparison: Front-seat vs Back-seat Passengers", y=1.02)
     plt.tight_layout()
-    plt.savefig("task1_2_seat.png")
-    # plt.show()
+    plt.savefig("task1_2_seat.png", bbox_inches="tight")
 
 
 task1_2()
