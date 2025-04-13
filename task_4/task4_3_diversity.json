@@ -1,0 +1,14 @@
+{
+    "Manufacturers": [
+        "UNKN",
+        "MERC B",
+        "FORD",
+        "ISUZU",
+        "VOLVO"
+    ],
+    "UNKN": 29,
+    "MERC B": 20,
+    "FORD": 19,
+    "ISUZU": 18,
+    "VOLVO": 18
+}

@@ -1,0 +1,72 @@
+{
+    "UNKN": [
+        {
+            "Vehicle Type": "Not Known",
+            "Probability": 0.44
+        },
+        {
+            "Vehicle Type": "Car",
+            "Probability": 0.21
+        },
+        {
+            "Vehicle Type": "Motor Cycle",
+            "Probability": 0.08
+        }
+    ],
+    "MERC B": [
+        {
+            "Vehicle Type": "Car",
+            "Probability": 0.6
+        },
+        {
+            "Vehicle Type": "Station Wagon",
+            "Probability": 0.18
+        },
+        {
+            "Vehicle Type": "Panel Van",
+            "Probability": 0.12
+        }
+    ],
+    "FORD": [
+        {
+            "Vehicle Type": "Car",
+            "Probability": 0.54
+        },
+        {
+            "Vehicle Type": "Utility",
+            "Probability": 0.2
+        },
+        {
+            "Vehicle Type": "Station Wagon",
+            "Probability": 0.18
+        }
+    ],
+    "ISUZU": [
+        {
+            "Vehicle Type": "Light Commercial Vehicle (Rigid) <= 4.5 Tonnes GVM",
+            "Probability": 0.36
+        },
+        {
+            "Vehicle Type": "Heavy Vehicle (Rigid) > 4.5 Tonnes",
+            "Probability": 0.27
+        },
+        {
+            "Vehicle Type": "Utility",
+            "Probability": 0.22
+        }
+    ],
+    "VOLVO": [
+        {
+            "Vehicle Type": "Station Wagon",
+            "Probability": 0.3
+        },
+        {
+            "Vehicle Type": "Car",
+            "Probability": 0.19
+        },
+        {
+            "Vehicle Type": "Bus/Coach",
+            "Probability": 0.15
+        }
+    ]
+}
