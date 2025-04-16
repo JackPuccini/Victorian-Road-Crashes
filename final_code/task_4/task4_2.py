@@ -4,15 +4,17 @@ import matplotlib.pyplot as plt
 
 
 def task4_2():
-    accident_df = pd.read_csv("data/accident.csv")
-    vehicle_df = pd.read_csv("data/vehicle.csv")
+    accident_df = pd.read_csv("/course/accident.csv")
+    vehicle_df = pd.read_csv("/course/vehicle.csv")
+
+    # Merge datasets on the accident number
     merged_df = accident_df.merge(vehicle_df, on="ACCIDENT_NO")
 
     # Group by road geometry and surface type
     grouped = merged_df.groupby(["ROAD_GEOMETRY_DESC", "ROAD_SURFACE_TYPE_DESC"]).size()
     heatmap_data = grouped.unstack(fill_value=0)
 
-    # Plot
+    # Create a heatmap and save
     plt.figure(figsize=(12, 8))
     sns.heatmap(heatmap_data, annot=True, fmt="d", cmap="YlGnBu")
     plt.title("Accident Counts by Road Geometry and Surface Type")

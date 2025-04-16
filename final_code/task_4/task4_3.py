@@ -3,7 +3,7 @@ import json
 
 
 def task4_3():
-    vehicle_df = pd.read_csv("data/vehicle.csv")
+    vehicle_df = pd.read_csv("/course/vehicle.csv")
 
     # 1. Top 5 Most Diverse Manufacturers
     # ------------------------------------
@@ -15,7 +15,7 @@ def task4_3():
     top5 = grouped.sort_values(ascending=False).head(5)
     top5_names = top5.index.tolist()
 
-    # Prepare JSON output and write to file
+    # Prepare json output and write to file
     task4_3_1_output = {"Manufacturers": top5_names}
     for manufacturer, count in top5.items():
         task4_3_1_output[manufacturer] = int(count)
@@ -36,7 +36,7 @@ def task4_3():
         subset = vehicle_df[vehicle_df["VEHICLE_MAKE"] == manufacturer]
         type_counts = subset["VEHICLE_TYPE_DESC"].value_counts().head(3)
 
-        # Use the total number of accidents for the manufacturer as the denominator.
+        # Use the total number of accidents for the manufacturer as the denominator
         manufacturer_total = len(subset)
 
         type_info = []
